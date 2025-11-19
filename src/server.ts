@@ -7,6 +7,7 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import oauthRoutes from './routes/oauth';
+import apiRoutes from './routes/api';
 import { cleanupExpiredCodes } from './database/apps';
 
 const app = express();
@@ -22,6 +23,7 @@ app.use(express.static(path.join(process.cwd(), 'public')));
 
 // Routes
 app.use('/oauth', oauthRoutes);
+app.use('/api', apiRoutes);
 
 // Health check endpoint
 app.get('/health', (req, res) => {
